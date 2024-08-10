@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt A Cat/Dog - Browse Available Pets</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="../go.js" defer></script>
+</head>
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <div class="container">
+        <nav class="side-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-account">create-account</a></li>
+                <li><a href="/browse">Browse Available Pets</a></li>
+                <li><a href="/find">Find a dog/cat</a></li>
+                <li><a href="/dog-care">Dog Care</a></li>
+                <li><a href="/cat-care">Cat Care</a></li>
+                <li><a href="/login">Have a pet to give away</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <main class="content-area">
+            <h2>Browse Available Pets</h2>
+            <div class="pet-list">
+                <!-- Pet 1 -->
+                <div class="pet-item">
+                    <img src="./photos/labradorRetriver.jpeg" alt="Pet 1 Image">
+                    <div class="pet-info">
+                        <h3>Max</h3>
+                        <p><strong>Type:</strong> Dog</p>
+                        <p><strong>Breed:</strong> Labrador Retriever</p>
+                        <p><strong>Age:</strong> 3 years</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <p><strong>Gets Along with Dogs:</strong> Yes</p>
+                        <p><strong>Gets Along with Cats:</strong> No</p>
+                        <p><strong>Suitable for Children:</strong> Yes</p>
+                        <p><strong>Comment:</strong> Max is a friendly and energetic dog who loves to play fetch.</p>
+                        <button class="interested-btn">Interested</button>
+                    </div>
+                </div>
+
+                <!-- Pet 2 -->
+                <div class="pet-item">
+                    <img src="./photos/cat1.jpg" alt="Pet 2 Image">
+                    <div class="pet-info">
+                        <h3>Whiskers</h3>
+                        <p><strong>Type:</strong> Cat</p>
+                        <p><strong>Breed:</strong> Siamese</p>
+                        <p><strong>Age:</strong> 2 years</p>
+                        <p><strong>Gender:</strong> Female</p>
+                        <p><strong>Gets Along with Dogs:</strong> No</p>
+                        <p><strong>Gets Along with Cats:</strong> Yes</p>
+                        <p><strong>Suitable for Children:</strong> No</p>
+                        <p><strong>Comment:</strong> Whiskers is a calm and affectionate cat who enjoys quiet environments.</p>
+                        <button class="interested-btn">Interested</button>
+                    </div>
+                </div>
+
+                <!-- Pet 3 -->
+                <div class="pet-item">
+                    <img src="./photos/begel.jpeg" alt="Pet 3 Image">
+                    <div class="pet-info">
+                        <h3>Buddy</h3>
+                        <p><strong>Type:</strong> Dog</p>
+                        <p><strong>Breed:</strong> Beagle</p>
+                        <p><strong>Age:</strong> 5 years</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <p><strong>Gets Along with Dogs:</strong> Yes</p>
+                        <p><strong>Gets Along with Cats:</strong> Yes</p>
+                        <p><strong>Suitable for Children:</strong> Yes</p>
+                        <p><strong>Comment:</strong> Buddy is a playful and loving dog who gets along well with everyone.</p>
+                        <button class="interested-btn">Interested</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+  <%-include("partials/footer")%> 
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt A Cat/Dog - Home</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="../go.js" defer></script>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+    <div class="container">
+        <nav class="side-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-account">create-account</a></li>
+                <li><a href="/browse">Browse Available Pets</a></li>
+                <li><a href="/find">Find a dog/cat</a></li>
+                <li><a href="/dog-care">Dog Care</a></li>
+                <li><a href="/cat-care">Cat Care</a></li>
+                <li><a href="/login">Have a pet to give away</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            
+        </nav>
+        <main class="content-area">
+            <h2>Welcome to Adopt A Cat/Dog</h2>
+            <p>Welcome to Adopt A Cat/Dog, your one-stop destination for finding a loving home for your furry friend or adopting a new pet. We are dedicated to connecting loving families with cats and dogs in need of a home.</p>
+            <p>Our mission is to ensure that every pet finds a loving and caring family. We have a wide variety of cats and dogs looking for homes, and we strive to make the adoption process as smooth and stress-free as possible.</p>
+            <p>Whether you are looking to adopt a pet or need to find a new home for your pet, we are here to help. Explore our website to learn more about our available pets, pet care tips, and how you can get involved in our mission.</p>
+            <h3>Why Adopt From Us?</h3>
+            <ul>
+                <li>Wide variety of cats and dogs available for adoption.</li>
+                <li>All pets are vaccinated, spayed/neutered, and microchipped.</li>
+                <li>Support and guidance throughout the adoption process.</li>
+                <li>Post-adoption support and resources.</li>
+            </ul>
+            <h3>Get Involved</h3>
+            <p>There are many ways to get involved and support our mission:</p>
+            <ul>
+                <li><a href="browse.html">Adopt a Pet</a></li>
+                <li><a href="give-away.html">Give a Pet Away</a></li>
+                <li><a href="volunteer.html">Volunteer with Us</a></li>
+                <li><a href="donate.html">Donate to Our Cause</a></li>
+            </ul>
+        </main>
+    </div>
+    <%-include("partials/footer")%> 
+</body>
+</html>

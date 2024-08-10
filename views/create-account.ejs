@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="../go.js"></script> <!-- Link to the validation script -->
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <h2>Create an Account</h2>
+        <form id="createAccountForm" action="/create-account" method="POST" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <small>Username can contain letters (both upper and lower case) and digits only.</small>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <small>Password must be at least 4 characters long, have at least one letter and one digit.</small>
+
+            <button type="submit">Create Account</button>
+        </form>
+        <div id="error-message" class="result"></div>
+    </div>
+
+    <footer>
+        <p>Privacy/Disclaimer Statement</p>
+    </footer>
+</body>
+</html>

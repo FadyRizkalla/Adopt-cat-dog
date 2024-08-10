@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt A Cat/Dog - Find a Dog/Cat</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="../go.js" defer></script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <nav class="side-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-account">create-account</a></li>
+                <li><a href="/browse">Browse Available Pets</a></li>
+                <li><a href="/find">Find a dog/cat</a></li>
+                <li><a href="/dog-care">Dog Care</a></li>
+                <li><a href="/cat-care">Cat Care</a></li>
+                <li><a href="/login">Have a pet to give away</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <main class="content-area">
+            <h2>Find a Dog/Cat</h2>
+            <form>
+                <label for="animal">Cat or Dog:</label>
+                <select id="animal" name="animal">
+                    <option value="doesnt-matter">Doesn't Matter</option>
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                </select><br><br>
+
+                <label for="breed">Breed of Dog/Cat:</label>
+                <input type="text" id="breed" name="breed"><br><br>
+
+                <label for="age">Preferred Age of Animal:</label>
+                <input type="text" id="age" name="age"><br><br>
+
+                <label for="gender">Preferred Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="doesnt-matter">Doesn't Matter</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select><br><br>
+
+                <label for="get-along">Needs to Get Along with:</label>
+                <input type="text" id="get-along" name="get-along"><br><br>
+                <p id="result"></p>
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </form>
+        </main>
+    </div>
+    <%-include("partials/footer")%> 
+</body>
+</html>

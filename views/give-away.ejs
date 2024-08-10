@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt A Cat/Dog - Have a Pet to Give Away</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="../go.js" defer></script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <nav class="side-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create-account">create-account</a></li>
+                <li><a href="/browse">Browse Available Pets</a></li>
+                <li><a href="/find">Find a dog/cat</a></li>
+                <li><a href="/dog-care">Dog Care</a></li>
+                <li><a href="/cat-care">Cat Care</a></li>
+                <li><a href="/give-away">Have a pet to give away</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <main class="content-area">
+            <h2>Have a Pet to Give Away</h2>
+            <form>
+                <label for="animal">Cat or Dog:</label>
+                <select id="animal" name="animal">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                </select><br><br>
+
+                <label for="breed">Breed of Dog/Cat:</label>
+                <input type="text" id="breed" name="breed"><br><br>
+
+                <label for="age">Age of Animal:</label>
+                <input type="text" id="age" name="age"><br><br>
+
+                <label for="gender">Animal Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select><br><br>
+
+                <label for="gets-along-dogs">Gets Along with Other Dogs:</label>
+                <input type="checkbox" id="gets-along-dogs" name="gets-along-dogs"><br><br>
+
+                <label for="gets-along-cats">Gets Along with Other Cats:</label>
+                <input type="checkbox" id="gets-along-cats" name="gets-along-cats"><br><br>
+
+                <label for="suitable-for-children">Suitable for a Family with Small Children:</label>
+                <input type="checkbox" id="suitable-for-children" name="suitable-for-children"><br><br>
+
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment"></textarea><br><br>
+
+                <label for="owner-name">Owner's Name:</label>
+                <input type="text" id="owner-name" name="owner-name"><br><br>
+
+                <label for="owner-email">Owner's Email:</label>
+                <input type="email" id="owner-email" name="owner-email"><br><br>
+
+                <p id="giveAwayResult"></p> <!-- Added this line for error messages -->
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </form>
+        </main>
+        <%-include("partials/footer")%> 
+</body>
+</html>

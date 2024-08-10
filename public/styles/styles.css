@@ -1,0 +1,224 @@
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#blurred-content.blur {
+    filter: blur(5px);
+}
+/*/*
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+}
+
+.side-menu {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+}
+
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin: 10px 0;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content-area {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.error {
+    color: red;
+}
+
+/* Login page styles */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+/* General styles for the page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes full viewport height */
+}
+
+.result {
+    color:red;
+}
+header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+
+header .logo {
+    max-width: 150px; /* Adjust the logo size as needed */
+    height: auto;
+}
+
+.container {
+    display: flex;
+    flex: 1; /* Allows the container to expand and fill available space */
+}
+
+.side-menu {
+    width: 200px;
+    background-color: #17d462;
+    padding: 10px;
+}
+
+.content-area {
+    flex: 1;
+    padding: 10px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+/* Additional styles for links and form elements */
+a {
+    color: #333;
+    text-decoration: none;
+}
+/* Styles for the pet list */
+.pet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
+
+.pet-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(33% - 20px); /* Three items per row with gaps */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pet-item img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.pet-info {
+    margin-top: 10px;
+}
+
+.interested-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.interested-btn:hover {
+    background-color: #45a049;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
