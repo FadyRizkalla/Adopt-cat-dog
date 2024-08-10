@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const session = require('express-session');  // Add this line
 const path = require('path');
-const 
 const app = express();
 
 // Middleware to parse JSON body
