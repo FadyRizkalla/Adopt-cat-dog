@@ -172,9 +172,9 @@ app.get('/search-pets', (req, res) => {
         const matchingPets = data.split('\n')
             .filter(line => line.trim() !== '') // Remove empty lines
             .map(line => {
-                const [petId, ownerName, petAnimal, petBreed, petAge, petGender, petGetsAlongDogs, petGetsAlongCats, petSuitableForChildren, comment, ownerEmail] = line.split(':');
+                const [id, ownerName, petAnimal, petBreed, petAge, petGender, petGetsAlongDogs, petGetsAlongCats, petSuitableForChildren, comment, ownerEmail] = line.split(':');
                 return {
-                    petId,
+                    id,
                     ownerName,
                     animal: petAnimal,
                     breed: petBreed,
@@ -188,13 +188,13 @@ app.get('/search-pets', (req, res) => {
                 };
             })
             .filter(pet =>
-                (!animal || pet.animal.toLowerCase() === animal.toLowerCase()) &&
+                (!animal || pet.animal.toLowerCase() === animal.toLowerCase() || animal === 'doesnt-matter') &&
                 (!breed || pet.breed.toLowerCase() === breed.toLowerCase()) &&
                 (!age || pet.age === age) &&
-                (!gender || pet.gender.toLowerCase() === gender.toLowerCase()) &&
-                (!getsAlongDogs || pet.getsAlongDogs === (getsAlongDogs === 'true' ? 'yes' : 'no')) &&
-                (!getsAlongCats || pet.getsAlongCats === (getsAlongCats === 'true' ? 'yes' : 'no')) &&
-                (!suitableForChildren || pet.suitableForChildren === (suitableForChildren === 'true' ? 'yes' : 'no'))
+                (!gender || pet.gender.toLowerCase() === gender.toLowerCase() || gender === 'doesnt-matter') &&
+                (!getsAlongDogs || pet.getsAlongDogs.toLowerCase() === getsAlongDogs.toLowerCase()) &&
+                (!getsAlongCats || pet.getsAlongCats.toLowerCase() === getsAlongCats.toLowerCase()) &&
+                (!suitableForChildren || pet.suitableForChildren.toLowerCase() === suitableForChildren.toLowerCase())
             );
 
         if (matchingPets.length > 0) {
@@ -204,7 +204,6 @@ app.get('/search-pets', (req, res) => {
         }
     });
 });
-
 
 
 app.get('/logout', (req, res) => {

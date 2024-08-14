@@ -1,7 +1,2 @@
-1:fady:cat:cat:123:male:no:no:no:dd:undefined
-2:rojan:cat:cat:1:male:no:no:no:n:undefined
-3:fady:cat:cat:20:male:no:no:no:dd:undefined
-4:fady:cat:cat:20:male:no:no:no:dd:undefined
-5:fady:cat:cat:122:male:no:no:no:df:undefined
-6:fady:cat:12:122:male:no:no:no:df:undefined
-7:fady:cat:cat:123:male:no:no:no:sss:undefined
+1:fady:cat:cat:2:male:no:no:no:hello:undefined
+1:fady:cat:siamese:2:male:no:no:no:hello:undefined
