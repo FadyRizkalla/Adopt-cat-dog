@@ -4,7 +4,8 @@ const fs = require('fs');
 const session = require('express-session');  // Add this line
 const path = require('path');
 const app = express();
-
+const loginFilePath='login.txt'
+const petFilePath = path.join(__dirname, 'pets.txt');
 // Middleware to parse JSON body
 app.use(express.json());
 
@@ -24,6 +25,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+
 // Middleware to check if the user is authenticated
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.username) {
@@ -33,6 +35,11 @@ function isAuthenticated(req, res, next) {
     }
 }
 
+const getNextPetId = () => {
+    const data = fs.readFileSync(petFilePath, 'utf8');
+    const lines = data.split('\n').filter(line => line.trim() !== '');
+    return lines.length + 1;
+};
 // Routes to render different pages
 app.get('/', (req, res) => {
     res.render("home"); // Home page
@@ -70,6 +77,7 @@ app.get('/create-account', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login', { errorMessage: '' });
 });
+
 // Handle form submission for account creation
 app.post('/create-account', (req, res) => {
     const { username, password } = req.body;
@@ -78,6 +86,10 @@ app.post('/create-account', (req, res) => {
     if (!username || !password) {
         return res.render('create-account', { errorMessage: 'Username and password are required.' });
     }
+    // if () {
+    //     return res.render('create-account', { errorMessage: 'Username and password are required.' });
+    // }
+    
 
     // Check if username already exists
     fs.readFile(loginFilePath, 'utf8', (err, data) => {
@@ -119,6 +131,90 @@ app.post('/login', (req, res) => {
                 res.render('login', { errorMessage: 'Invalid username or password.' });
             }
         }
+    });
+});
+
+app.post('/addpet', (req, res) => {
+    // Retrieve the form data from the request body
+    console.log(req.body)
+    const { animal, breed, age, gender, getsAlongDogs, getsAlongCats, suitableForChildren, comment, ownerEmail } = req.body;
+
+    // Get the next pet ID
+    const petId = getNextPetId();
+
+    // Get the current signed-in user's username from the session
+    const ownerName = req.session.username;
+
+    // Prepare the pet entry as a single line string with colon-separated values
+    const petEntry = `${petId}:${ownerName}:${animal}:${breed}:${age}:${gender}:${getsAlongDogs ? 'yes' : 'no'}:${getsAlongCats ? 'yes' : 'no'}:${suitableForChildren ? 'yes' : 'no'}:${comment}:${ownerEmail}\n`;
+
+    // Append the pet entry to the pets.txt file
+    fs.appendFile(petFilePath, petEntry, (err) => {
+        if (err) {
+            console.error('Error writing to the file:', err);
+            return res.status(500).send('An error occurred while saving the pet information.');
+        }
+
+        // Redirect to a confirmation page or send a success response
+        res.send('Pet information added successfully!');
+    });
+});
+
+app.get('/search-pets', (req, res) => {
+    const { animal, breed, age, gender, getsAlongDogs, getsAlongCats, suitableForChildren } = req.query;
+
+    fs.readFile(petFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading the pets file:', err);
+            return res.status(500).send('An error occurred while retrieving pet information.');
+        }
+
+        const matchingPets = data.split('\n')
+            .filter(line => line.trim() !== '') // Remove empty lines
+            .map(line => {
+                const [petId, ownerName, petAnimal, petBreed, petAge, petGender, petGetsAlongDogs, petGetsAlongCats, petSuitableForChildren, comment, ownerEmail] = line.split(':');
+                return {
+                    petId,
+                    ownerName,
+                    animal: petAnimal,
+                    breed: petBreed,
+                    age: petAge,
+                    gender: petGender,
+                    getsAlongDogs: petGetsAlongDogs,
+                    getsAlongCats: petGetsAlongCats,
+                    suitableForChildren: petSuitableForChildren,
+                    comment,
+                    ownerEmail
+                };
+            })
+            .filter(pet =>
+                (!animal || pet.animal.toLowerCase() === animal.toLowerCase()) &&
+                (!breed || pet.breed.toLowerCase() === breed.toLowerCase()) &&
+                (!age || pet.age === age) &&
+                (!gender || pet.gender.toLowerCase() === gender.toLowerCase()) &&
+                (!getsAlongDogs || pet.getsAlongDogs === (getsAlongDogs === 'true' ? 'yes' : 'no')) &&
+                (!getsAlongCats || pet.getsAlongCats === (getsAlongCats === 'true' ? 'yes' : 'no')) &&
+                (!suitableForChildren || pet.suitableForChildren === (suitableForChildren === 'true' ? 'yes' : 'no'))
+            );
+
+        if (matchingPets.length > 0) {
+            res.render('search-results', { pets: matchingPets });
+        } else {
+            res.render('search-results', { pets: [], message: 'No pets found matching your criteria.' });
+        }
+    });
+});
+
+
+
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.redirect('/dashboard');
+        }
+
+        res.clearCookie('connect.sid'); // Optional: Clears the cookie
+        res.redirect('/login');
     });
 });
 

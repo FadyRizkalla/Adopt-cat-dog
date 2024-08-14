@@ -14,7 +14,7 @@ function setTime() {
     <br>${hour}:${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`;
 }
 
-function validateForm() {
+function validateForm(event) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('error-message');
@@ -24,15 +24,13 @@ function validateForm() {
 
     if (!usernamePattern.test(username)) {
         errorMessage.textContent = "Invalid username. It must contain only letters and digits.";
-        return false;
+        event.preventDefault();
     }
 
     if (!passwordPattern.test(password)) {
         errorMessage.textContent = "Invalid password. It must be at least 4 characters long, contain at least one letter, and one digit.";
-        return false;
+        event.preventDefault();
     }
-
-    return true;
 }
 
 function checkfind(event) {
@@ -75,7 +73,7 @@ function checkGiveAway(event) {
     const age = document.getElementById("age");
     const ownerName = document.getElementById("owner-name");
     const ownerEmail = document.getElementById("owner-email");
-    const result = document.getElementById("giveAwayResult");
+    
 
     if (breed.value.trim() === "" || age.value.trim() === "" || ownerName.value.trim() === "" || ownerEmail.value.trim() === "") {
         result.textContent = "Error: All required fields must be filled.";

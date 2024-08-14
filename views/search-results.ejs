@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <% if (pets.length > 0) { %>
+        <ul>
+            <% pets.forEach(pet => { %>
+                <li>
+                    <strong>ID:</strong> <%= pet.petId %> <br>
+                    <strong>Owner:</strong> <%= pet.ownerName %> <br>
+                    <strong>Animal:</strong> <%= pet.animal %> <br>
+                    <strong>Breed:</strong> <%= pet.breed %> <br>
+                    <strong>Age:</strong> <%= pet.age %> <br>
+                    <strong>Gender:</strong> <%= pet.gender %> <br>
+                    <strong>Gets Along with Dogs:</strong> <%= pet.getsAlongDogs %> <br>
+                    <strong>Gets Along with Cats:</strong> <%= pet.getsAlongCats %> <br>
+                    <strong>Suitable for Children:</strong> <%= pet.suitableForChildren %> <br>
+                    <strong>Comment:</strong> <%= pet.comment %> <br>
+                    <strong>Email:</strong> <%= pet.ownerEmail %> <br>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p><%= message %></p>
+    <% } %>
+</body>
+</html>

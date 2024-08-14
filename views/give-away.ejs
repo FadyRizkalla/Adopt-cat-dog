@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopt A Cat/Dog - Have a Pet to Give Away</title>
     <link rel="stylesheet" href="/styles/styles.css">
-    <script src="../go.js" defer></script>
+   
+</head>
     <style>
         .error {
             color: red;
@@ -18,18 +19,19 @@
         <nav class="side-menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/create-account">create-account</a></li>
                 <li><a href="/browse">Browse Available Pets</a></li>
                 <li><a href="/find">Find a dog/cat</a></li>
                 <li><a href="/dog-care">Dog Care</a></li>
                 <li><a href="/cat-care">Cat Care</a></li>
-                <li><a href="/give-away">Have a pet to give away</a></li>
+                <li><a href="/give-away">give-away</a></li>
                 <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/logout">logout</a></li>
             </ul>
         </nav>
         <main class="content-area">
+            
             <h2>Have a Pet to Give Away</h2>
-            <form>
+            <form action="/addpet" method="POST">
                 <label for="animal">Cat or Dog:</label>
                 <select id="animal" name="animal">
                     <option value="cat">Cat</option>
